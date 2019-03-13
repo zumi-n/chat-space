@@ -1,0 +1,42 @@
+.wrapper
+
+  = render 'left-bar'
+
+  .chatview
+    .header
+      .left-header
+        .left-header__title
+          text-group
+        %ul
+          Member:
+          %li member-name1
+          %li member-name2
+      .right-header
+        .right-header__button
+          Edit
+    .comments
+      .comment
+        .upper-comment
+          .upper-comment__name
+            member-name1
+          .upper-comment__date
+            2019/03/13(Wed)23:09:11
+        .lower-comment
+          message1
+        .upper-comment
+          .upper-comment__name
+            member-name2
+          .upper-comment__date
+            2019/03/14(Thu)23:09:11
+        .lower-comment
+          message2
+    .form
+      %form
+        %input.form__message{placeholder: "type a message"}
+        .form__mask
+          %label.form__mask__image
+            = fa_icon 'picture-o', class: 'icon'
+            %input.hidden{type: 'file'}
+        %input.form__submit{type: 'submit', value: 'Send'}
+
+
