@@ -1,0 +1,107 @@
+.chatview{
+  width: calc(100% - 300px);
+  float: right;
+    .header{
+      box-sizing: border-box;
+      background-color: white;
+      height: 100px;
+      margin: 0 40px;
+      .left-header{
+        float: left;
+        &__title{
+          color: #333;
+          font-size: 20px;
+          margin-top: 35px;
+        }
+        &__members{
+          display: flex;
+          color: #999999;
+          font-size: 12px;
+          margin-top: 15px;
+          text-indent: 10px;
+        }
+      }
+      .right-header{
+        float: right;
+        border: solid 1px #38AEF0;
+        padding: 0 20px;
+        margin-top: 28px;
+        height: 40px;
+        line-height: 40px;
+          a:link{
+            text-decoration: none;
+            color: #38AEF0;
+          }
+          a:visited{
+            text-decoration: none;
+            color: #38AEF0;
+          }
+       }
+    }
+
+    .comments{
+      box-sizing: border-box;
+      background-color: #FAFAFA;
+      border-top: solid 1px #eeeeee;
+      height: calc(100vh - 100px - 90px);
+      padding: 46px 40px 0;
+        .comment{
+          .upper-comment{
+            display: flex;
+          &__name{
+            font-weight: bold;
+            color: #434a54;
+            font-size: 16px;
+          }
+          &__date{
+            font-size: 12px;
+            color: #999999;
+            padding-left: 10px;
+          }
+        }
+          .lower-comment{
+            margin-top: 10px;
+            margin-bottom: 40px;
+          }
+        }
+    }
+    .form{
+      background-color: #DDDDDD;
+      box-sizing: border-box;
+      height: 90px;
+      padding: 20px 50px 20px 40px;
+      position: fixed;
+      width: calc(100% - 300px);
+      bottom: 0px;
+      &__message{
+        float: left;
+        border: none;
+        height: 50px;
+        font-size: 16px;
+        color: #434A54;
+        text-indent: 10px;
+        width: calc(100% - 150px);
+      }
+      &__picture{
+        padding-right: 10px;
+        float: left;
+        background-color: white;
+        height: 50px;
+        &__image{
+          line-height: 50px;
+        }
+        .hidden{
+          display: none;
+        }
+      }
+      input.form__submit{
+        border: none;
+        float: right;
+        height: 50px;
+        background-color: #38AEF0;
+        color: white;
+        margin-left: 15px;
+        padding: 0 30px;
+      }
+    }
+}
