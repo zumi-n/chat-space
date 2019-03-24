@@ -1,13 +1,13 @@
 .wrapper
 
-  = render 'left-bar'
+  = render 'messages/left-bar'
 
   .chatview
     .header
       .left-header
         .left-header__title
           %h2
-            = @group.name
+          = @group.name
         .left-header__members
           %p Member :
           - @group.users.each do |username|
