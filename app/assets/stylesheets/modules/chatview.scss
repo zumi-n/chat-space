@@ -43,8 +43,9 @@
       box-sizing: border-box;
       background-color: #FAFAFA;
       border-top: solid 1px #eeeeee;
-      height: calc(100vh - 100px - 90px);
-      padding: 46px 40px 0;
+      height: calc(100vh - 190px);
+      padding: 46px 40px;
+      overflow: scroll;
         .comment{
           .upper-comment{
             display: flex;
@@ -82,7 +83,7 @@
         text-indent: 10px;
         width: calc(100% - 150px);
       }
-      &__picture{
+      &__mask{
         padding-right: 10px;
         float: left;
         background-color: white;
@@ -94,7 +95,7 @@
           display: none;
         }
       }
-      input.form__submit{
+      .form__submit{
         border: none;
         float: right;
         height: 50px;
