@@ -39,16 +39,15 @@
        }
     }
 
-    .messages{
+    .comments{
       box-sizing: border-box;
       background-color: #FAFAFA;
       border-top: solid 1px #eeeeee;
-      height: calc(100vh - 100px - 90px);
-      padding: 46px 40px 0;
+      height: calc(100vh - 190px);
+      padding: 46px 40px;
       overflow: scroll;
-        .message{
-            margin-bottom: 40px;
-          .upper-message{
+        .comment{
+          .upper-comment{
             display: flex;
           &__name{
             font-weight: bold;
@@ -61,7 +60,7 @@
             padding-left: 10px;
           }
         }
-          .lower-message{
+          .lower-comment{
             margin-top: 10px;
             margin-bottom: 40px;
           }
