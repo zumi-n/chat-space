@@ -39,15 +39,16 @@
        }
     }
 
-    .comments{
+    .messages{
       box-sizing: border-box;
       background-color: #FAFAFA;
       border-top: solid 1px #eeeeee;
-      height: calc(100vh - 190px);
-      padding: 46px 40px;
+      height: calc(100vh - 100px - 90px);
+      padding: 46px 40px 0;
       overflow: scroll;
-        .comment{
-          .upper-comment{
+        .message{
+            margin-bottom: 40px;
+          .upper-message{
             display: flex;
           &__name{
             font-weight: bold;
@@ -60,9 +61,13 @@
             padding-left: 10px;
           }
         }
-          .lower-comment{
+          .lower-message{
             margin-top: 10px;
             margin-bottom: 40px;
+            // &__image{
+            // height: 155px;
+            // width: 200px;
+            // }
           }
         }
     }
