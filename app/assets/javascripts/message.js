@@ -6,16 +6,15 @@ $(function(){
     }
     var html = `<div class="message">
                     <div class="upper-message">
-                      <div class="upper-message__name">
-                        ${ message.name }
-                      </div>
-                      <div class="upper-message__date">
-                        ${ message.time }
-                      </div>
+                      <p class="upper-message__name">
+                        ${ message.name }</p>
+                      <p class="upper-message__date">
+                        ${ message.time }</p>
+                    </div>
                     <div class="lower-message">
                       <p class="lower-message__content">
                         ${ message.content }
-                      </p>™
+                      </p>
                       <img class="lower-message__image">
                         ${ insertImage }
                     </div>
@@ -40,12 +39,16 @@ $(function(){
       var html = buildHTML(message);
       $('.messages').append(html)
       $('.form__message').val('')
-      $('.form__submit').prop('disabled', false);
+      // $('.form__submit').prop('disabled', false);
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
    })
       .fail(function(){
       alert('メッセージを入力してください');
-      $('.form__submit').prop('disabled', false);
+      // $('.form__submit').prop('disabled', false);
     });
+
+      .always(function(){
+      $('.form__submit').prop('disabled', false);
+      });
   })
 });
