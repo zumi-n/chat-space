@@ -45,10 +45,10 @@ $(function(){
       .fail(function(){
       alert('メッセージを入力してください');
       // $('.form__submit').prop('disabled', false);
-    });
+    })
 
       .always(function(){
       $('.form__submit').prop('disabled', false);
-      });
+      })
   })
 });
