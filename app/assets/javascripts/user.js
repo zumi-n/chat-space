@@ -60,8 +60,6 @@ $(function(){
     })
   });
 
-
-
     $(document).on('click', '.user-search-add', function(){
       $(this).parent()[0].remove();
       var user_id = $(this).data("user-id");

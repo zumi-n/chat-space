@@ -38,17 +38,12 @@ $(function(){
     .done(function(message){
       var html = buildHTML(message);
       $('.messages').append(html)
-      $('.form__message').val('')
-      // $('.form__submit').prop('disabled', false);
+      $('#new_message')[0].reset()
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
-   })
+      $('.form__submit').prop('disabled', false);
+     })
       .fail(function(){
       alert('メッセージを入力してください');
-      // $('.form__submit').prop('disabled', false);
     })
-
-      .always(function(){
-      $('.form__submit').prop('disabled', false);
-      })
   })
 });
