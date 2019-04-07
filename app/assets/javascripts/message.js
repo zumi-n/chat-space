@@ -4,7 +4,8 @@ $(function(){
     if (message.image.url) {
       insertImage = `<img src="${message.image.url}">`;
     }
-    var html = `<div class="message">
+    console.log(insertImage)
+    var html = `<div class="message", id="${message.id}">
                     <div class="upper-message">
                       <p class="upper-message__name">
                         ${ message.name }</p>
@@ -50,7 +51,7 @@ $(function(){
   // 以下、自動更新機能
   $(function(){
     var buildMessageHTML = function(message) {
-    if (message.content && message.image.url) {
+    if (message.content && message.image) {
       //data-idが反映されるようにしている
       var html = '<div class="message" data-id=' + message.id + '>' +
         '<div class="upper-message">' +
@@ -65,7 +66,7 @@ $(function(){
           '<p class="lower-message__content">' +
             message.content +
           '</p>' +
-          '<img src="' + message.image.url + '" class="lower-message__image" >' +
+          '<img src="' + message.image + '" class="lower-message__image" >' +
         '</div>' +
       '</div>'
     } else if (message.content) {
@@ -85,7 +86,7 @@ $(function(){
           '</p>' +
         '</div>' +
       '</div>'
-    } else if (message.image.url) {
+    } else if (message.image) {
       //同様に、data-idが反映されるようにしている
       var html = '<div class="message" data-id=' + message.id + '>' +
         '<div class="upper-message">' +
@@ -97,21 +98,19 @@ $(function(){
           '</div>' +
         '</div>' +
         '<div class="lower-message">' +
-          '<img src="' + message.image.url + '" class="lower-message__image" >' +
+          '<img src="' + message.image + '" class="lower-message__image" >' +
         '</div>' +
       '</div>'
     };
     return html;
   };
-  $(function(){
     setInterval(reloadMessages, 5000);
-  });
     function reloadMessages(){
-    if($('.message')[0]){
-    var last_message_id = $('.message:last').data('message_id');
-    }else{
-      var last_message_id = 0
-    }
+    if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+    var last_message_id = $('.message:last').attr('id');
+
+     console.log(last_message_id);
+
     $.ajax({
       url: location.href,
       type: 'GET',
@@ -119,15 +118,21 @@ $(function(){
       dataType: 'json'
     })
     .done(function(data){
+      // console.log("doneroot");
       var insertHTML = '';
       $.each(data, function(i, data){
+
         insertHTML = buildMessageHTML(data);
+        // console.log(insertHTML)
       });
       $('.messages').append(insertHTML).animate({scrollTop:$('.messages')[0].scrollHeight});
     })
     .fail(function(){
       alert('自動更新に失敗しました');
-    })
+    });
+  }else{
+    clearInterval(update);
   }
+ };
 });
 });
