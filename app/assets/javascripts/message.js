@@ -108,9 +108,6 @@ $(function(){
     function reloadMessages(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
     var last_message_id = $('.message:last').attr('id');
-
-     console.log(last_message_id);
-
     $.ajax({
       url: location.href,
       type: 'GET',
@@ -118,12 +115,10 @@ $(function(){
       dataType: 'json'
     })
     .done(function(data){
-      // console.log("doneroot");
       var insertHTML = '';
       $.each(data, function(i, data){
 
         insertHTML = buildMessageHTML(data);
-        // console.log(insertHTML)
       });
       $('.messages').append(insertHTML).animate({scrollTop:$('.messages')[0].scrollHeight});
     })
