@@ -46,4 +46,88 @@ $(function(){
       alert('メッセージを入力してください');
     })
   })
+
+  // 以下、自動更新機能
+  $(function(){
+    var buildMessageHTML = function(message) {
+    if (message.content && message.image.url) {
+      //data-idが反映されるようにしている
+      var html = '<div class="message" data-id=' + message.id + '>' +
+        '<div class="upper-message">' +
+          '<div class="upper-message__user-name">' +
+            message.user_name +
+          '</div>' +
+          '<div class="upper-message__date">' +
+            message.created_at +
+          '</div>' +
+        '</div>' +
+        '<div class="lower-message">' +
+          '<p class="lower-message__content">' +
+            message.content +
+          '</p>' +
+          '<img src="' + message.image.url + '" class="lower-message__image" >' +
+        '</div>' +
+      '</div>'
+    } else if (message.content) {
+      //同様に、data-idが反映されるようにしている
+      var html = '<div class="message" data-id=' + message.id + '>' +
+        '<div class="upper-message">' +
+          '<div class="upper-message__user-name">' +
+            message.user_name +
+          '</div>' +
+          '<div class="upper-message__date">' +
+            message.created_at +
+          '</div>' +
+        '</div>' +
+        '<div class="lower-message">' +
+          '<p class="lower-message__content">' +
+            message.content +
+          '</p>' +
+        '</div>' +
+      '</div>'
+    } else if (message.image.url) {
+      //同様に、data-idが反映されるようにしている
+      var html = '<div class="message" data-id=' + message.id + '>' +
+        '<div class="upper-message">' +
+          '<div class="upper-message__user-name">' +
+            message.user_name +
+          '</div>' +
+          '<div class="upper-message__date">' +
+            message.created_at +
+          '</div>' +
+        '</div>' +
+        '<div class="lower-message">' +
+          '<img src="' + message.image.url + '" class="lower-message__image" >' +
+        '</div>' +
+      '</div>'
+    };
+    return html;
+  };
+  $(function(){
+    setInterval(reloadMessages, 5000);
+  });
+    function reloadMessages(){
+    if($('.message')[0]){
+    var last_message_id = $('.message:last').data('message_id');
+    }else{
+      var last_message_id = 0
+    }
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      data: { id: last_message_id },
+      dataType: 'json'
+    })
+    .done(function(data){
+      var insertHTML = '';
+      $.each(data, function(i, data){
+        insertHTML = buildMessageHTML(data);
+      });
+      $('.messages').append(insertHTML).animate({scrollTop:$('.messages')[0].scrollHeight});
+    })
+    .fail(function(){
+      alert('自動更新に失敗しました');
+    })
+  }
+});
 });
