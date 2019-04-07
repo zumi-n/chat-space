@@ -48,61 +48,6 @@ $(function(){
   })
 
   // 以下、自動更新機能
-  // $(function(){
-  //   var buildMessageHTML = function(message) {
-  //   if (message.content && message.image) {
-  //     //data-idが反映されるようにしている
-  //     var html = '<div class="message" data-id=' + message.id + '>' +
-  //       '<div class="upper-message">' +
-  //         '<div class="upper-message__user-name">' +
-  //           message.user_name +
-  //         '</div>' +
-  //         '<div class="upper-message__date">' +
-  //           message.created_at +
-  //         '</div>' +
-  //       '</div>' +
-  //       '<div class="lower-message">' +
-  //         '<p class="lower-message__content">' +
-  //           message.content +
-  //         '</p>' +
-  //         '<img src="' + message.image + '" class="lower-message__image" >' +
-  //       '</div>' +
-  //     '</div>'
-  //   } else if (message.content) {
-  //     //同様に、data-idが反映されるようにしている
-  //     var html = '<div class="message" data-id=' + message.id + '>' +
-  //       '<div class="upper-message">' +
-  //         '<div class="upper-message__user-name">' +
-  //           message.user_name +
-  //         '</div>' +
-  //         '<div class="upper-message__date">' +
-  //           message.created_at +
-  //         '</div>' +
-  //       '</div>' +
-  //       '<div class="lower-message">' +
-  //         '<p class="lower-message__content">' +
-  //           message.content +
-  //         '</p>' +
-  //       '</div>' +
-  //     '</div>'
-  //   } else if (message.image) {
-  //     //同様に、data-idが反映されるようにしている
-  //     var html = '<div class="message" data-id=' + message.id + '>' +
-  //       '<div class="upper-message">' +
-  //         '<div class="upper-message__user-name">' +
-  //           message.user_name +
-  //         '</div>' +
-  //         '<div class="upper-message__date">' +
-  //           message.created_at +
-  //         '</div>' +
-  //       '</div>' +
-  //       '<div class="lower-message">' +
-  //         '<img src="' + message.image + '" class="lower-message__image" >' +
-  //       '</div>' +
-  //     '</div>'
-  //   };
-  //   return html;
-  // };
     setInterval(reloadMessages, 5000);
     function reloadMessages(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)) {
@@ -113,10 +58,10 @@ $(function(){
       data: { id: last_message_id },
       dataType: 'json'
     })
-    .done(function(data){
+    .done(function(message){
       var insertHTML = '';
-      $.each(data, function(i, data){
-        insertHTML = buildHTML(data);
+      $.each(message, function(i, message){
+        insertHTML = buildHTML(message);
       });
       $('.messages').append(insertHTML).animate({scrollTop:$('.messages')[0].scrollHeight});
     })
