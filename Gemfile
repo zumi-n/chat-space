@@ -54,15 +54,17 @@ group :development do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+  gem 'haml-rails'
+  gem 'erb2haml'
+  gem "font-awesome-rails"
+  gem 'devise'
+  gem 'carrierwave'
+  gem 'mini_magick'
+  gem 'jquery-rails'
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'haml-rails'
-gem 'erb2haml'
-gem "font-awesome-rails"
-gem 'devise'
-gem 'carrierwave'
-gem 'mini_magick'
-gem 'jquery-rails'
+
 
