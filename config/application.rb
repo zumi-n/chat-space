@@ -1,5 +1,3 @@
-require 'devise'
-require 'carrierwave'
 require_relative 'boot'
 
 require 'rails/all'
