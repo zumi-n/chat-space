@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 group :production do
-  gem 'unicorn', '5.5.0'
+  gem 'unicorn', '5.4.1'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
