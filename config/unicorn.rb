@@ -1,4 +1,4 @@
-app_path = File.expand_path('../../../', __FILE__)
+app_path = File.expand_path('../..', __dir__)
 
 worker_processes 1
 
@@ -33,7 +33,7 @@ before_fork do |server, worker|
       Process.kill(sig, File.read(old_pid).to_i)
     rescue Errno::ENOENT, Errno::ESRCH => e
       logger.error e
-          end
+    end
   end
 end
 
